@@ -76,11 +76,10 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/updateProduct/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public String updateProduct(@PathVariable("id") int id,Model model) {
-		model.addAttribute("product", this.productService.getProduct(id));
-		model.addAttribute("listOfProducts", this.productService.getAllProducts());
-		return "productDetails";
-		//return "editProduct";
+	public String updateProduct(@PathVariable("id") int id, Model model) {
+		Product product = productService.getProduct(id);
+		model.addAttribute("product", product);
+		return "editProduct";
 	}
 	
 	@RequestMapping(value = "deleteProduct/{id}")
